@@ -361,9 +361,18 @@ export async function handleProxy(request: Request, target: ProxyTarget): Promis
       const text = await upstream.text()
       const originBase = origin.origin_url.replace(/\/$/, '')
       const originHttp = originBase.replace(/^https:/, 'http:')
-      const rewritten = text
+      let rewritten = text
         .replaceAll(originBase, publicPrefix)
         .replaceAll(originHttp, publicPrefix)
+
+      if (publicPrefix && publicPrefix !== '/') {
+        // Rewrite root-relative URLs so form submissions and assets route through the proxy
+        const prefixNoSlash = publicPrefix.replace(/\/$/, '')
+        rewritten = rewritten
+          .replace(/href="\/(?!\/)/g, `href="${prefixNoSlash}/`)
+          .replace(/src="\/(?!\/)/g, `src="${prefixNoSlash}/`)
+          .replace(/action="\/(?!\/)/g, `action="${prefixNoSlash}/`)
+      }
 
       responseHeaders.delete('content-length')
       return new Response(rewritten, {
