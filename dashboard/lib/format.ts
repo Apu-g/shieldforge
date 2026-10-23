@@ -29,12 +29,22 @@ export function formatRelative(
   now: number = Date.now(),
 ): string {
   if (!value) return "—";
-  const ms = new Date(value).getTime();
+  let ms = new Date(value).getTime();
   if (Number.isNaN(ms)) return "—";
-  const seconds = Math.max(0, Math.round((now - ms) / 1000));
-  if (seconds < 5) return "just now";
-  if (seconds < 60) return `${seconds}s ago`;
-  const minutes = Math.floor(seconds / 60);
+
+  // If timestamp was stored with IST local time as UTC (+5.5h offset)
+  if (ms - now > 5 * 3600 * 1000 && ms - now < 6 * 3600 * 1000) {
+    ms -= 5.5 * 3600 * 1000;
+  }
+
+  const rawDiff = Math.round((now - ms) / 1000);
+  if (rawDiff < 0) {
+    // If within a few seconds of clock drift
+    return "just now";
+  }
+  if (rawDiff < 10) return "just now";
+  if (rawDiff < 60) return `${rawDiff}s ago`;
+  const minutes = Math.floor(rawDiff / 60);
   if (minutes < 60) return `${minutes}m ago`;
   const hours = Math.floor(minutes / 60);
   if (hours < 24) return `${hours}h ago`;
