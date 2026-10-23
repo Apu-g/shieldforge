@@ -1,0 +1,39 @@
+{
+  "origins": [
+    {
+      "path_prefix": "/t/aisummit",
+      "origin_url": "https://aisummit.ieeebangalore.org",
+      "origin_id": "55555555-5555-4555-8555-555555555555",
+      "name": "IEEE AI Summit Bangalore",
+      "description": "IEEE Bangalore Section AgenticAI Summit 2026."
+    },
+    {
+      "path_prefix": "/t/fakizon",
+      "origin_url": "https://fakizon.vercel.app",
+      "origin_id": "77777777-7777-4777-8777-777777777777",
+      "name": "Fakizon Store",
+      "description": "Fakizon E-Commerce Store origin."
+    },
+    {
+      "path_prefix": "/t/shop",
+      "origin_url": "https://example.com",
+      "origin_id": "11111111-1111-4111-8111-111111111111",
+      "name": "Victim Shop (example.com stand-in)",
+      "description": "Safe public stand-in until the Part 4 victim app is deployed."
+    },
+    {
+      "path_prefix": "/t/echo",
+      "origin_url": "https://httpbin.org",
+      "origin_id": "22222222-2222-4222-8222-222222222222",
+      "name": "Echo / cookie lab (httpbin.org)",
+      "description": "Echoes requests and sets a deliberately weak cookie."
+    },
+    {
+      "path_prefix": "/t/fast",
+      "origin_url": "https://httpbingo.org",
+      "origin_id": "33333333-3333-4333-8333-333333333333",
+      "name": "Fast second origin (httpbingo.org)",
+      "description": "Proves more than one origin can be registered at the same time."
+    }
+  ]
+}

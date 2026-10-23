@@ -1,0 +1,24 @@
+{
+  "name": "shieldforge-victim-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:prefix": "NEXT_PUBLIC_BASE_PATH=/t/victim-shop next dev -p 4000",
+    "dev:host": "NEXT_PUBLIC_BASE_PATH= next dev -p 4001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "15.5.28",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "5.9.3"
+  }
+}

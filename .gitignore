@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+*/node_modules/
+*/*/node_modules/
+
+# Next.js & Build outputs
+.next/
+*/.next/
+*/*/.next/
+.vercel/
+dist/
+build/
+
+# Python cache & venv
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local env files with secrets
+.env
+.env*.local
+*.local
+
+# Logs, PIDs, and caches
+*.log
+logs/
+pids.json
+demo-videos/
+*.tsbuildinfo
+.DS_Store
+Thumbs.db

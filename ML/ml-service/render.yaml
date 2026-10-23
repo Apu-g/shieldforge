@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: shieldforge-ml
+    runtime: docker
+    plan: free
+    region: oregon
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: MODEL_VERSION
+        value: shieldforge-ml-1.0.0
+      - key: LOG_LEVEL
+        value: INFO

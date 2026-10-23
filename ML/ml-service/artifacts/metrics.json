@@ -1,0 +1,144 @@
+{
+  "metrics": {
+    "classes": [
+      "benign",
+      "cred_stuffing",
+      "php_rce",
+      "scanner",
+      "sqli",
+      "xss"
+    ],
+    "train_rows": 17193,
+    "test_rows": 2458,
+    "split": {
+      "train": 17193,
+      "val": 2360,
+      "calibration": 1389,
+      "test": 2458
+    },
+    "accuracy": 0.9947111472742066,
+    "macro_f1": 0.9954966779797304,
+    "weighted_f1": 0.9946940761897392,
+    "per_class": {
+      "benign": {
+        "precision": 0.9885297184567258,
+        "recall": 0.9978947368421053,
+        "f1": 0.9931901519119958,
+        "support": 950
+      },
+      "cred_stuffing": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 161
+      },
+      "php_rce": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 367
+      },
+      "scanner": {
+        "precision": 0.9939759036144579,
+        "recall": 0.9705882352941176,
+        "f1": 0.9821428571428571,
+        "support": 340
+      },
+      "sqli": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 427
+      },
+      "xss": {
+        "precision": 1.0,
+        "recall": 0.9953051643192489,
+        "f1": 0.9976470588235294,
+        "support": 213
+      }
+    },
+    "binary": {
+      "tp": 1497,
+      "fp": 2,
+      "fn": 11,
+      "tn": 948,
+      "precision": 0.9986657771847899,
+      "recall": 0.9927055702917772,
+      "f1": 0.9956767542401064,
+      "false_positive_rate": 0.002105263157894737
+    },
+    "confusion_matrix": [
+      [
+        948,
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        161,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        367,
+        0,
+        0,
+        0
+      ],
+      [
+        10,
+        0,
+        0,
+        330,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        427,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        212
+      ]
+    ],
+    "ece_before": 0.0032036806019079384,
+    "ece_after": 0.0030030289123131456,
+    "temperature": 1.1888064389815176,
+    "training_seconds": 154.4,
+    "n_features": 6136,
+    "best_iteration": 211
+  },
+  "dataset": {
+    "pat_payloads": {
+      "xss": 114,
+      "sqli": 32,
+      "php_rce": 23
+    },
+    "total": 23400,
+    "label_xss": 3000,
+    "label_sqli": 3000,
+    "label_php_rce": 2800,
+    "label_scanner": 3500,
+    "label_cred_stuffing": 1600,
+    "label_benign": 9500,
+    "source_synthetic": 11631,
+    "source_pat": 3820,
+    "source_csic": 7949
+  }
+}
