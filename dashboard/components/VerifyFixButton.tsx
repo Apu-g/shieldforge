@@ -15,7 +15,7 @@ export function VerifyFixButton({
   const [error, setError] = useState<string | null>(null);
 
   if (status === "fixed_verified") {
-    return <span className="verified-mark">Verified</span>;
+    return <span className="badge badge-emerald" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '11px', padding: '2px 8px', borderRadius: '6px', background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', border: '1px solid rgba(16, 185, 129, 0.3)' }}>✓ Mitigated</span>;
   }
 
   async function verify() {
