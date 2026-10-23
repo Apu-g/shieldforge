@@ -14,6 +14,7 @@ import type { NormalizedOrigin, PolicyPatch } from "../origins";
 import { getServerSupabase } from "../supabase/server";
 import { assembleSnapshot } from "./assemble";
 import type { Store } from "./index";
+import { ensureFindingReasoning } from "../ai-reasoner";
 
 // Supabase's nested relational selects are dynamic; normalize them once here.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -172,7 +173,20 @@ export class SupabaseStore implements Store {
 
     const origins = ((originsRes.data ?? []) as Row[]).map(mapOrigin);
     const policies = ((policiesRes.data ?? []) as Row[]).map(mapPolicy);
-    const findings = ((findingsRes.data ?? []) as Row[]).map(mapFinding);
+    const rawFindings = ((findingsRes.data ?? []) as Row[]).map(mapFinding);
+    // Enrich unsummarized findings immediately with AI root-cause analysis, precautions, and timing
+    const findings = await Promise.all(
+      rawFindings.map(async (f, idx) => {
+        if (!f.ai_summary && idx < 10) {
+          try {
+            return await ensureFindingReasoning(f);
+          } catch {
+            return f;
+          }
+        }
+        return f;
+      })
+    );
     const incidents = ((incidentsRes.data ?? []) as Row[]).map(mapIncident);
     const trainingUsers = ((usersRes.data ?? []) as Row[]).map((row) => ({
       id: String(row.id),

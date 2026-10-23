@@ -103,7 +103,7 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
   }, [mode, refresh]);
 
   useEffect(() => {
-    const intervalMs = mode === "supabase" ? 4000 : 1200;
+    const intervalMs = mode === "supabase" ? 2000 : 1200;
     const interval = setInterval(() => void refresh(), intervalMs);
     return () => clearInterval(interval);
   }, [mode, refresh]);
